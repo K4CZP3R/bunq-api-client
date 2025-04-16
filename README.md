@@ -137,3 +137,22 @@ Thanks to the library's abstraction, you can also use this client in browser-bas
    - Forwards incoming HTTP requests to the bunq API.
    - Adds appropriate CORS response headers with specific allowed origins for your domain.
      Point your browser-based client to this proxy for all bunq API requests by using the `baseUrlOverride` option.
+
+## Example storage for Expo
+
+```ts
+import type { BunqStorage } from "bunq-api-client/dist/storage";
+import * as SecureStore from "expo-secure-store";
+
+export class BunqSecureStorage implements BunqStorage {
+  async get(key: string): Promise<string | undefined> {
+    return (await SecureStore.getItemAsync(`bunq_${key}`)) ?? undefined;
+  }
+  async set(key: string, value: string): Promise<void> {
+    await SecureStore.setItemAsync(`bunq_${key}`, value);
+  }
+  async delete(key: string): Promise<void> {
+    await SecureStore.deleteItemAsync(`bunq_${key}`);
+  }
+}
+```
