@@ -2,6 +2,10 @@
 
  A TypeScript and JavaScript client for the bunq API.
 
+ This library was created to simplify the authentication flow in the official bunq SDKs and to abstract away the complexity of signature creation. It provides a streamlined, developer-friendly interface for working with the bunq API.
+
+ > **⚠️ Warning:** This code has not been audited and was created as a personal proof of concept while experimenting with the bunq API. It is not recommended for production use.
+
  ## Installation
 
  Install with npm, Yarn or pnpm:
